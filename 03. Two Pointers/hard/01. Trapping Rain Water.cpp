@@ -6,11 +6,10 @@ int main(){
     int n = size(arr);
     int start = 0, end = n-1;
     int lmax = 0,rmax=0;
-    int maxi = 0,index = 0;
+    int index = 0;
     int ans=0;
     for (int i=0;i<n;i++){
-        if(arr[i]>maxi){
-            maxi = arr[i];
+        if(arr[i]>arr[index]){
             index = i;
         }
     }

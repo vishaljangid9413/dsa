@@ -6,7 +6,7 @@
 // and also can consist duplicate element
 
 // now, we have to create a new array 
-// and store the element with theire occurence count 
+// and store the element with their occurence count 
 // now how can we do this,
 
 // Example: if we have to search for 8

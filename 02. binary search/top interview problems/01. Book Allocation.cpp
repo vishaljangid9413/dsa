@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 bool is_possible(vector<int>arr,int n,int mid,int k){
@@ -13,6 +14,13 @@ bool is_possible(vector<int>arr,int n,int mid,int k){
             total = arr[i];
         }
     }
+    // Here, we are determining if the books can be distributed among a certain number of students. 
+// If the number of books allotted is equal to or fewer than `k` and the student count `<= k`, 
+// then the distribution is feasible. 
+// Now, consider the case where the number of books exceeds `k` by just 1. 
+// If the resulting student count is greater than `k + 1`, it would clearly exceed the available books. 
+// In this case, it becomes impossible to allocate `k + 1` books to `k + 2` students.
+
     if(count <= k ){
         return 1;
     }else{
@@ -44,5 +52,5 @@ int main(){
             start = mid +1;
         }
     }
-    cout<<"DDDDDDD "<<ans;
+    cout<<"Ans: "<<ans;
 }

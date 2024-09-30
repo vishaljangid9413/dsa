@@ -3,7 +3,6 @@ using namespace std;
 
 int main(){
     int arr[3][3] ={1,2,3, 4,5,6, 7,8,9};
-
     int row = 3,col=3;
     for(int i=0;i<row;i++){
         int start=0,end = row-1;

@@ -7,7 +7,7 @@ using namespace std;
 // is minimum of maximum distance we can give 
 // means cows ko aise rakhna h ki wo dur bhi rahe apas me
 // aur enough stalls me bhi place ho jaye
-// simple si baat h ki me diye gayi stall ko pura use karo 
+// simple si baat h ki mein diye gayi stall ko pura use karu
 // aur cows ko jitne dur ho utna dur rakh saku aapas me 
 
 // so we have to find that particular distance 
@@ -22,6 +22,7 @@ bool is_possible(int arr[], int mid, int n, int k){
     // then place the cow to that stall and store the position of that cow 
     int cows = 1;
     int position_of_cow = arr[0];
+    
     for (int i= 1;i<n;i++){
         if(mid+position_of_cow <= arr[i] ){
             position_of_cow = arr[i];

@@ -15,9 +15,11 @@ using namespace std;
 // remaining_elements = (n/3 + 1) * 2
 //                    = 3*2 = 6
 //                    = n -6 = 2
-// its not possible, so if the size is 7, only one majaority element is possible   
+// so, to exist one more majority elment, 
+// remaining should be greater than n/3
+// but here we have only 2 remaining 
+// so at max we can 2 majority elements of an array 
             
-                
 
 // And here we use "Boyer-Moore Majority Vote Algorithm"
 
@@ -29,10 +31,10 @@ int main(){
     int candidate1= 0,count1 = 0;
 
     for (int i=0;i<n;i++){
-        if(count == 0 && candidate1 != arr[i]){
+        if(count <= 0 && candidate1 != arr[i]){
             count = 1;
             candidate = arr[i];
-        }else if(count1 == 0 && candidate != arr[i]){
+        }else if(count1 <= 0 && candidate != arr[i]){
             count1 = 1;
             candidate1 = arr[i];
         }else if(candidate == arr[i]){
@@ -44,7 +46,7 @@ int main(){
             count1--;
         }
     }
-    cout<<candidate<<" "<<candidate1<<endl;
+
     // verify 
     count=0,count1=0;
     for(int i=0;i<n;i++){

@@ -16,11 +16,12 @@ int main(){
             swap(arr[i],arr[index]);
         }
     }
-    for(int i=0;i<n-2;i++){
-        for(int j=i+1;j<n-1;j++){
+    for(int i=0;i<n-3;i++){
+        for(int j=i+1;j<n-2;j++){
             int temp =  x -arr[i] -arr[j];
-            int start = j+1,end=n;
+            int start = j+1,end=n-1;
             while(start<end){
+                cout<<"hello"<<endl;
                 if(arr[start]+arr[end]==temp){
                     cout<<arr[start]<<" "<<arr[end]<<" "<<arr[i]<<" "<<arr[j]<<endl;
                     break;

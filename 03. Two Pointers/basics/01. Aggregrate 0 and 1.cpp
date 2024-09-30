@@ -11,7 +11,7 @@ int main(){
         }else{
             if(arr[end]==0){
                 swap(arr[start],arr[end]);
-                start++;end--;
+                start++;end--;  
             }else{
                 end--;
             }

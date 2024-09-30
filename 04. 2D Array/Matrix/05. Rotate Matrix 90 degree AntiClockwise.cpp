@@ -11,6 +11,7 @@ int main(){
         }
     }
     
+    // reverse the columns
     int start= 0,end=row-1;
     while(start<end){
         for(int i=0;i<row;i++){

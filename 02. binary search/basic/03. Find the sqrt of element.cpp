@@ -6,6 +6,7 @@ int main(){
     int start = 0,end=x,ans=0,mid;
     if(x<2){
         cout<<x<<endl;
+        return x;
     }
 
     while (start<=end){

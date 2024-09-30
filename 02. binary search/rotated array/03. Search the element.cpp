@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-    int arr[] ={4,5,6,7,0,1,2};
+    int arr[] ={4,5,6,7,10,1,2};
     int n = size(arr),target=10;
     int start = 0,end=n-1,mid,ans=-1;
     while(start<=end){

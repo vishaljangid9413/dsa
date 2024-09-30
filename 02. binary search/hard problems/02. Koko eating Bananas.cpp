@@ -5,17 +5,17 @@ bool is_possible(int arr[], int n, int mid, int hour){
     int total=0;
     for (int i=0;i<n;i++){
         // here you can use this only 
-        // total += (arr[i]+mid-1)/mid; //working like ceil
+        total += (arr[i]+mid-1)/mid; //working like ceil
 
         // or can use this, both works correctly 
-        if(arr[i]<mid){
-            total++;
-        }else{
-            total += arr[i]/mid;
-            if(arr[i]%mid != 0){
-                total++;
-            }
-        }
+        // if(arr[i] < mid){
+        //     total++;
+        // }else{
+        //     total += arr[i] / mid;
+        //     if(arr[i] % mid != 0){
+        //         total++;
+        //     }
+        // }
         if(total>hour){
             return 0;
         }
@@ -38,10 +38,10 @@ int main(){
     long long sum=0;
     for (int i=0;i<n;i++){
         sum+= arr[i];
-        end = max(end,arr[i]);
     }
     start = sum/hour;
-    ans = end;
+    ans = arr[n-1];
+
     if (!start)
     start=1;
 

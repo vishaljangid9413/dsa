@@ -7,10 +7,10 @@ using namespace std;
 
 int main(){
     int arr[4][4] ={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
-    int row = 4, col =4, k=5;
-    int rotate = 4 % k;
+    int row = 4, col =4, k=8;
+    int rotate = k % 4;
 
-    for (int a = 0;a <= rotate;a++){
+    while (rotate){
         // First transpose matrix 
         for (int i=0;i<row;i++){
             for(int j= i+1;j<col;j++){
@@ -25,6 +25,7 @@ int main(){
                 start++;end--;
             }
         }
+        rotate--;
     }
 
     for(int i=0;i<row;i++){

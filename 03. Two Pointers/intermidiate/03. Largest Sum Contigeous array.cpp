@@ -18,6 +18,6 @@ int main()
             prefix=0;
         }
     }
-    return maxi;
+    cout<< maxi;
 
 }

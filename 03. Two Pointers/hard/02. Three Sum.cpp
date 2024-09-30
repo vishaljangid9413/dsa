@@ -19,7 +19,7 @@ int main(){
         while(start<end){
             if(arr[start]+arr[end]==temp){
                 cout<<"True"<<endl;
-                break;
+                return 1;
             }else if(arr[start]+arr[end] < temp){
                 start++;
             }else{

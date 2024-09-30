@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// creates all the possible contigeous subarrays
+
 int main()
 {
     int arr[] = {2, 4, 5, 6};

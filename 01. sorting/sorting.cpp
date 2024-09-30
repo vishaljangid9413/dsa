@@ -5,7 +5,7 @@ using namespace std;
 void selection_sort(int arr[], int n){
     // In selection sort, we always look for the smallest elment in right
     // and then swap with the current elemtn 
-    for (int i=0;i<n;i++){
+    for (int i=0;i<n-1;i++){
         int index =i;
         for (int j=i+1;j<n;j++){
             if(arr[j]<arr[index]){

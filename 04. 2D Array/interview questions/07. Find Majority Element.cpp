@@ -3,7 +3,7 @@ using namespace std;
 
 // Here we have to find the majority element 
 // and also verify that the majority element apperance count 
-// is more than  n/2 it means only majority element can exist;
+// is more than  n/2 it means only one majority element can exist;
 
 // And here we use "Boyer-Moore Majority Vote Algorithm"
 
@@ -25,7 +25,6 @@ int main(){
         }
     }
 
-
     // verify
     count =0;
     for (int i=0;i<n;i++){
@@ -35,7 +34,8 @@ int main(){
     }
 
     if(count > n/2){
-        cout<<"Ans: "<<candidate<<" "<<1/3<<endl;
+        cout<<"Ans: "<<candidate;
+        return candidate;
     }
     cout<<-1;
 }
