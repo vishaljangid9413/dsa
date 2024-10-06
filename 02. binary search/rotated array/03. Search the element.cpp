@@ -24,5 +24,5 @@ int main(){
             }
         }
     }
-    cout<<"SSSSS: "<<ans;
+    cout<<"Ans: "<<ans;
 }
