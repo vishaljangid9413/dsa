@@ -1,41 +1,52 @@
 #include <iostream>
 using namespace std;
 
-// Here we have to find the majority element 
-// and also verify that the majority element apperance count 
-// is more than  n/2 it means only one majority element can exist;
+// Problem: Given an array of size n, where the goal is to find the majority element,
+// which is defined as an element that appears more than n/2 times. If such an element
+// exists, we need to return it; otherwise, indicate that there is no majority element.
+//
+// Approach:
+// 1. Use the Boyer-Moore Majority Vote Algorithm to find a candidate for the majority element.
+// 2. Verify if the candidate is indeed the majority by counting its occurrences in the array.
+// 3. If the candidate's count is greater than n/2, it is the majority element; otherwise, it is not.
+//
+// Time Complexity: O(n) for traversing the array twice.
+// Space Complexity: O(1) since we are using a constant amount of extra space.
 
-// And here we use "Boyer-Moore Majority Vote Algorithm"
+int main() {
+    // Initialize the array with elements to find the majority element.
+    int arr[] = {2, 2, 1, 1, 1};
+    int n = sizeof(arr) / sizeof(arr[0]); // Get the size of the array.
 
-int main(){
-    int arr[]= {2,2,1,1,1};
-    int n = size(arr);
+    int candidate = 0; // To store the potential majority element.
+    int count = 0; // To count occurrences of the candidate.
 
-    int candidate= 0,count = 0;
-    for(int i = 0;i<n;i++){
-        if (count == 0){
-            count = 1;
-            candidate = arr[i];
-        }else{
-            if (candidate == arr[i]){
-                count++;
-            }else{
-                count--;
-            }
+    // Step 1: Boyer-Moore Majority Vote Algorithm to find the candidate.
+    for (int i = 0; i < n; i++) {
+        if (count == 0) {
+            candidate = arr[i]; // Set the current element as the candidate.
+            count = 1; // Reset count for the new candidate.
+        } else if (arr[i] == candidate) {
+            count++; // Increment count if the current element matches the candidate.
+        } else {
+            count--; // Decrement count if the current element does not match.
         }
     }
 
-    // verify
-    count =0;
-    for (int i=0;i<n;i++){
-        if (candidate == arr[i]){
-            count++;
+    // Step 2: Verify if the candidate is indeed the majority element.
+    count = 0; // Reset count for verification.
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == candidate) {
+            count++; // Count how many times the candidate appears.
         }
     }
 
-    if(count > n/2){
-        cout<<"Ans: "<<candidate;
-        return candidate;
+    // Step 3: Check if the candidate's count is greater than n/2.
+    if (count > n / 2) {
+        cout << "YES " << candidate; // Print the candidate if it is the majority.
+    } else {
+        cout << "NO"; // Indicate that there is no majority element.
     }
-    cout<<-1;
+
+    return 0;
 }
