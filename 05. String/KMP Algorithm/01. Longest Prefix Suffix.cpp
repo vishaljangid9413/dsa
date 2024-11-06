@@ -2,40 +2,56 @@
 #include <vector>
 using namespace std;
 
-// KMP ALGORITHM - Knuth Moris Pratt Algorithm 
-// This algorithm works like if you are matchin two pointers
-// and they match then add the first pointer's index + 1 in second pointer
-// and if not matched then check if first pointer index is 0 
-// if it is then store 0 in second pointer
-// or if index is not 0, then check the value of previous element of
-// first pointer and point the first pointer to that elements value
-// and last pointer's value is your ans 
+// Problem Statement:
+// Implement the Knuth-Morris-Pratt (KMP) pattern matching algorithm to find the 
+// length of the longest prefix which is also a suffix in a given string `s`. 
+// For example, in the string "abacab", the longest prefix which is also a suffix 
+// is "ab", which has a length of 2.
 
+// Approach:
+// - The KMP algorithm is based on constructing a Longest Prefix Suffix (LPS) array. 
+//   The LPS array stores the length of the longest proper prefix of the substring `s[0...i]` 
+//   which is also a suffix of `s[0...i]`.
+// - We initialize two pointers: `start` and `end`. The `start` pointer marks the beginning 
+//   of the current prefix, and the `end` pointer scans through the string.
+// - If `s[start]` matches `s[end]`, it indicates the current prefix is also a suffix, so 
+//   we set `lps[end] = start + 1` and move both pointers forward.
+// - If there's a mismatch, we check if `start` is zero. If so, we simply move `end` forward. 
+//   Otherwise, we set `start` to `lps[start - 1]`, essentially using previously computed 
+//   values to avoid redundant checks.
+// - The result is stored in the last element of the LPS array, which provides the length 
+//   of the longest prefix which is also a suffix.
 
-// Here we have to find the prfix and suffix 
-// in a string means longest possible strings 
-// prfix - starts with starting of string 
-// suffix - starts with ending of string 
-// ex = "abacab", prufix = "ab", suffix = "ab"
+// Time Complexity: O(n), where `n` is the length of the string `s`.
+// - Each character is processed at most twice, making this an efficient algorithm.
+
+// Space Complexity: O(n), as we use an LPS array to store values for each character in the string `s`.
 
 int main(){
-    string s = "abacab";
-    int n= s.size();
-    vector<int>lps(n, 0);
-    int start = 0, end = 1;
+    string s = "abacab";  // Input string
+    int n = s.size();  // Length of the string
+    vector<int> lps(n, 0);  // LPS array initialized to zero for each character in `s`
+    int start = 0, end = 1;  // Initial pointers for traversing the string
 
-    while(end < n){
-        if(s[start] == s[end]){
-            lps[end] = start+1;
-            start++;end++;
-        }else{
-            if(start == 0){
-                lps[end]=0;
+    // Building the LPS array
+    while (end < n) {
+        if (s[start] == s[end]) {
+            // If characters match, update the LPS value for `end` index
+            lps[end] = start + 1;
+            start++;
+            end++;
+        } else {
+            // If there's a mismatch
+            if (start == 0) {
+                // If start is zero, simply move the end pointer forward
                 end++;
-            }else{
-                start = lps[start-1];
+            } else {
+                // Use the value from the LPS array to avoid redundant comparisons
+                start = lps[start - 1];
             }
         }
     }
-    cout<<"Ans: "<<lps[n-1];
+
+    // Output the length of the longest prefix which is also a suffix
+    cout << lps[n - 1];
 }

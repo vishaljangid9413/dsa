@@ -2,75 +2,69 @@
 #include <vector>
 using namespace std;
 
-// Here we have to find that the count of the longest substring, 
-// which consists all the unique elements only
+// Problem:
+// Find the length of the longest substring in a given string `s` 
+// that contains only unique characters.
 
-void first_approach(string s, int n){
-    // This is my custom approach where 
-    // i am just checking that is the current element already
-    // stored in the array or not 
-    // and if it is then just get the value of that element 
-    // and the value represents its (index + 1) means 
-    // where the element is stored in the string +1 of its index 
-    // so it gives a value where we can shift our starting point  
-    // then store the end+1 position on that element value 
-    // and then just increase end++;
-    // and every time at the ending of loop, store the max 
-    // between ans and length of the current window 
+// Approach 1 (Sliding Window with Hash Map):
+// The idea is to maintain a sliding window of unique characters.
+// For each new character, if it's already in the window, 
+// shift the starting point to the right of the previous occurrence of that character.
+// Keep track of the maximum window length with unique characters.
 
-    vector<int>arr(255,0);
+// Time Complexity: O(n), where n is the length of the string.
+// Space Complexity: O(1), since the size of the array is constant (255 characters).
+
+void first_approach(string s, int n) {
+    vector<int> arr(255, 0);  // Array to store the latest index of characters
     int start = 0, end = 0;
     int ans = 1;
 
-    while(end < n){
+    // Sliding window over the string
+    while (end < n) {
         char c = s[end];
-        if(arr[c] && start < arr[c]){
+        // If the character is already in the window, move the start to the right
+        if (arr[c] && start < arr[c]) {
             start = arr[c];
         }
-        arr[c] = end + 1;
-        end++;
-        ans = max(ans, end-start);
-        cout<<start<<" "<<end<<" "<<c<<endl;
+        arr[c] = ++end;  // Update the position of the character
+        ans = max(ans, end - start);  // Calculate the maximum length
     }
-    cout<<"Ans: "<<ans<<endl;
+    cout << "First Approach Ans: " << ans << endl;
 }
 
-void second_approach(string s, int n){
-    // Here we are first checking for that the 
-    // character is present in the array
-    // and then we loop through it while that its value will be 0
-    // then begin the loop from the start index and store 0 to 
-    // every index from the start and increase start++ 
-    // and when the current repetative element will be 0
-    // stop the loop 
-    // and then store the 1 to the current element and 
-    // then increase end++
-    // and find the difference between end-start and store the 
-    // max ans 
+// Approach 2 (Sliding Window with Frequency Count):
+// Here, we again use a sliding window, but instead of storing the last position of the character,
+// we store whether the character is in the current window or not. If a duplicate is found, 
+// shift the start pointer until the window is valid again (contains unique characters).
 
-    vector<int>arr(255,0);
+// Time Complexity: O(n), where n is the length of the string.
+// Space Complexity: O(1), since we are using a fixed-size array of 255 characters.
 
+void second_approach(string s, int n) {
+    vector<int> arr(255, 0);  // Array to mark whether the character is in the current window
     int start = 0, end = 0;
-    int ans =0;
-    while(end<n){
+    int ans = 0;
+
+    while (end < n) {
         char c = s[end];
-        while(arr[c]){
-            arr[s[start]]=0;
+        // If the current character is already in the window, move the start pointer
+        while (arr[c]) {
+            arr[s[start]] = 0;
             start++;
         }
 
-        arr[c] = 1;
+        arr[c] = 1;  // Mark the character as present in the window
         end++;
-        ans = max(ans, end-start);
+        ans = max(ans, end - start);  // Update the maximum length of unique characters
     }
-    cout<<"Ans: "<<ans;
+    cout << "Second Approach Ans: " << ans << endl;
 }
 
-int main(){
-    string s = "abbannc";
-    int n = s.size();
+int main() {
+    string s = "abbannc";  // Input string
+    int n = s.size();  // Size of the string
 
-    first_approach(s,n);
-    second_approach(s,n);
-
+    first_approach(s, n);  // First approach to find the longest substring
+    second_approach(s, n);  // Second approach to find the longest substring
 }
