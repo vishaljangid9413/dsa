@@ -5,6 +5,7 @@ using namespace std;
 Problem: Place `k` cows in `n` stalls such that the minimum distance between any two cows is maximized.
 - We need to find the largest minimum distance that can be maintained between any two cows in the given stalls.
 
+Link: https://www.geeksforgeeks.org/problems/aggressive-cows/1
 Time Complexity: O(n log d)
 - Sorting the array takes O(n log n).
 - The binary search for the optimal distance runs in O(log d), where `d` is the difference between the maximum and minimum stall positions.
