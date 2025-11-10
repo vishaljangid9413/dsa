@@ -59,10 +59,10 @@ void find_possible_pallindrome(vector<int> lower, vector<int> upper) {
     // Loop over lowercase and uppercase alphabets
     for (int i = 0; i < 26; i++) {
         // Process lowercase letters
-        if (lower[i] % 2 != 0) {
-            odd_word = char(i + 'a'); // Store the odd occurrence letter.
-        }
         if (lower[i]) {
+            if (lower[i] % 2 != 0) {
+                odd_word = char(i + 'a'); // Store the odd occurrence letter.
+            }
             int temp = lower[i] / 2; // Use half of the count for the left side.
             while (temp--) {
                 left += char(i + 'a'); // Append the character to the left half.
@@ -70,10 +70,10 @@ void find_possible_pallindrome(vector<int> lower, vector<int> upper) {
         }
 
         // Process uppercase letters
-        if (upper[i] % 2 != 0) {
-            odd_word = char(i + 'A'); // Store the odd occurrence letter.
-        }
         if (upper[i]) {
+            if (upper[i] % 2 != 0) {
+                odd_word = char(i + 'A'); // Store the odd occurrence letter.
+            }
             int temp = upper[i] / 2; // Use half of the count for the left side.
             while (temp--) {
                 left += char(i + 'A'); // Append the character to the left half.
@@ -96,7 +96,7 @@ void find_possible_pallindrome(vector<int> lower, vector<int> upper) {
 
 int main() {
     // Input string containing both lowercase and uppercase letters.
-    string s = "aaaAAbdc";
+    string s = "aaaAAbdcc";
 
     // Vectors to store the frequency of lowercase and uppercase letters.
     vector<int> lower(26, 0), upper(26, 0);
